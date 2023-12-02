@@ -54,8 +54,8 @@ spec:
           #- host: zycuspoc.tk
   - http:
       paths:
-      - path: /
-        pathType: Prefix
+      - path: /teacher/actuator/health
+        pathType: Exact
         backend:
           service:
             name: teacherapp
