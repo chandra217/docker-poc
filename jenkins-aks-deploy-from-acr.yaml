@@ -54,11 +54,12 @@ spec:
   #- host: zycuspoc.tk
   - http:
       paths:
-      - path: /teacher/actuator/health
-        pathType: Prefix  # Use "Prefix" instead of "Exact" for the specified path
+      - path: /foo/teacher/actuator/health
+        pathType: Exact
         backend:
           service:
             name: teacherapp
             port:
               number: 80
+
 
