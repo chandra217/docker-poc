@@ -33,6 +33,31 @@ spec:
     port: 80
     protocol: TCP
     targetPort: 10000
-  type: LoadBalancer
+  # type: LoadBalancer
+  type: ClusterIP
   selector:
     app: teacherapp
+
+
+# Ingress
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: teacherapp-ing
+  annotations:
+    # kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  ingressClassName: nginx
+  rules:
+          #- host: zycuspoc.tk
+  - http:
+      paths:
+      - path: /teacher/actuator/health
+        pathType: Prefix
+        backend:
+          service:
+            name: teacherapp
+            port:
+              number: 80
