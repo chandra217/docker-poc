@@ -51,13 +51,14 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-          #- host: zycuspoc.tk
+  #- host: zycuspoc.tk
   - http:
       paths:
-      - path: /foo/teacher/actuator/health
-        pathType: Exact
+      - path: /teacher/actuator/health
+        pathType: Prefix  # Use "Prefix" instead of "Exact" for the specified path
         backend:
           service:
             name: teacherapp
             port:
               number: 80
+
