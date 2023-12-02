@@ -53,8 +53,8 @@ spec:
   rules:
   - http:
       paths:
-      - path: /foo/teacher/actuator/health
-        pathType: Exact
+      - path: /
+        pathType: Prefix
         backend:
           service:
             name: teacherapp
